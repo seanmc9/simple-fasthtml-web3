@@ -1,10 +1,10 @@
 from fasthtml.common import *
 from web3 import Web3, AsyncWeb3
+from constants import abi
 
 app,rt = fast_app()
 
 w3 = Web3(Web3.HTTPProvider('https://mainnet.base.org'))
-abi = '[{"type":"function","name":"version","inputs":[],"outputs":[{"name":"","type":"string","internalType":"string"}],"stateMutability":"pure"}]'
 
 con = w3.eth.contract(address='0x26cdA3c012779491d33122d0e2cFCe87dd74C254', abi=abi)
 
