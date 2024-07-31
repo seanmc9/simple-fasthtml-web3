@@ -1,12 +1,12 @@
 from fasthtml.common import *
 from web3 import Web3, AsyncWeb3
-from constants import abi
+from constants import 4_29_CONTEST_ABI 
 
 app,rt = fast_app()
 
 w3 = Web3(Web3.HTTPProvider('https://mainnet.base.org'))
 
-con = w3.eth.contract(address='0x26cdA3c012779491d33122d0e2cFCe87dd74C254', abi=abi)
+con = w3.eth.contract(address='0x26cdA3c012779491d33122d0e2cFCe87dd74C254', abi=4_29_CONTEST_ABI)
 
 @rt('/props')
 def post():
