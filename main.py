@@ -8,6 +8,10 @@ w3 = Web3(Web3.HTTPProvider('https://mainnet.base.org'))
 
 con = w3.eth.contract(address='0x26cdA3c012779491d33122d0e2cFCe87dd74C254', abi=abi)
 
+@rt('/props')
+def post():
+    return str(con.functions.getAllProposalIds().call())
+
 @rt('/submit')
 def post(html: str): 
     return html
@@ -21,6 +25,7 @@ def get():
 @rt('/')
 def get():
     txt = Textarea(id="html", rows=10, hx_post='/submit', target_id="ft", hx_trigger='keyup delay:500ms')
-    return Div(P('Hello World!', hx_get="/change"), txt, Div(id="ft"))
+    props_button = Button('Get Proposals', id='getprops', cls='col-xs-2', hx_post='/props', target_id="ft2")
+    return Div(P('Hello World!', hx_get="/change"), txt, Div(id="ft"), props_button, Div(id="ft2"))
 
 serve()
